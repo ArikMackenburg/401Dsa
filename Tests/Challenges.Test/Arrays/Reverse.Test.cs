@@ -3,7 +3,7 @@ using Xunit;
 using Challenges.Arrays;
 
 
-namespace Challenges.Test
+namespace Challenges.Test.Arrays
 {
     public class ReverseTest
     {
