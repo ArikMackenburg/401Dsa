@@ -1,2 +1,2 @@
 # 401Dsa
-+ [Reverse Array](./Arrays/Reverse.md)
++ [Reverse Array](Arrays/README.md)
