@@ -1,10 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
+using Xunit;
+using DataStructures.LinkedLists;
 
 namespace DataStructures.Tests.LinkedLists
 {
-    class LinkedList
+    public class LinkedListTest
     {
+        [Fact]
+
+        public void LinkedList_starts_empty()
+        {
+            LinkedList list = new LinkedList();
+        }
     }
 }
