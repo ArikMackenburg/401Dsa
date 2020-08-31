@@ -45,3 +45,4 @@ head -> [1] -> [3] -> [2] -> X |	2, 5 |	head -> [1] -> [3] -> [2] -> [5] -> X
 head -> [1] -> [2] -> [2] -> X |	2, 5 |	head -> [1] -> [2] -> [5] -> [2] -> X
 head -> [1] -> [3] -> [2] -> X |  4, 5 |	Exception
 ```
+![Insertions Whiteboard](../../Assets/Challenge6.jpg)
