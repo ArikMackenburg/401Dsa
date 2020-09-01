@@ -113,5 +113,30 @@ namespace DataStructures.LinkedLists
                 current = current.Next;
             }
         }
+
+        public int KthFromTheEnd(int k)
+        {
+            int counter = 0;
+            Node current = Head;
+
+            while (current.Next != null)
+            {
+                current = current.Next;
+                counter++;
+            }
+            if (Math.Abs(k) > counter || current == null)
+            {
+                throw new OutOfRangeException(k);
+            }
+            counter = counter - Math.Abs(k);
+            current = Head;
+            for (int i = 0; i < counter; i++)
+            {
+                current = current.Next;
+            }
+            return current.Value;
+          
+
+        }
     }
 }
