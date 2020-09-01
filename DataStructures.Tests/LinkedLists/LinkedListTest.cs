@@ -1,4 +1,5 @@
 ﻿using DataStructures.LinkedLists;
+using System;
 using Xunit;
 
 namespace DataStructures.Tests.LinkedLists
@@ -93,6 +94,35 @@ namespace DataStructures.Tests.LinkedLists
 
             Assert.Equal(expect, list.ToString());
 
+        }
+
+        [Theory]
+        [InlineData(0,2)]
+        [InlineData(2,3)]
+        public void K_value_equals(int k,int expect)
+        {
+            LinkedList list = new LinkedList();
+            list.Append(1);
+            list.Append(3);
+            list.Append(8);
+            list.Append(2);
+
+            Assert.Equal(expect, list.KthFromTheEnd(k));
+        }
+        [Fact]
+        public void K_out_of_range()
+        {
+            LinkedList list = new LinkedList();
+            list.Append(1);
+            list.Append(3);
+            list.Append(8);
+            list.Append(2);
+
+            Exception ex = Assert.Throws<OutOfRangeException>(() =>
+            {
+                list.KthFromTheEnd(8);
+            });
+            Assert.Equal("8", ex.Message);
         }
 
     }
