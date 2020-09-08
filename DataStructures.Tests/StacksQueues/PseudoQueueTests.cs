@@ -29,15 +29,30 @@ namespace DataStructures.Tests.StacksQueues
             Assert.Equal("Stack is empty", ex.Message);
         }
         [Fact]
+        public void DeQueue_returns_last()
+        {
+            PseudoQueue<int> q = new PseudoQueue<int>();
+            q.EnQueue(20);
+            q.EnQueue(15);
+            q.EnQueue(10);
+            q.EnQueue(5);
+
+            Assert.Equal(20, q.DeQueue());
+            Assert.Equal("{ 5 } -> { 10 } -> { 15 } -> NULL", q.ToString());
+
+
+        }
+        [Fact]
         public void Enqueue_adds_to_end()
         {
             PseudoQueue<int> q = new PseudoQueue<int>();
 
-            q.EnQueue(3);
-            q.EnQueue(2);
-            q.EnQueue(1);
+            q.EnQueue(20);
+            q.EnQueue(15);
+            q.EnQueue(10);
+            q.EnQueue(5);
 
-            Assert.Equal("{ 1 } -> { 2 } -> { 3 } -> NULL", q.ToString());
+            Assert.Equal("{ 5 } -> { 10 } -> { 15 } -> { 20 } -> NULL", q.ToString());
 
         }
         [Fact]
@@ -55,10 +70,12 @@ namespace DataStructures.Tests.StacksQueues
         public void Peek_return_Front()
         {
             PseudoQueue<int> q = new PseudoQueue<int>();
-            q.EnQueue(3);
-            q.EnQueue(2);
+            q.EnQueue(20);
+            q.EnQueue(15);
+            q.EnQueue(10);
+            q.EnQueue(5);
 
-            Assert.Equal(3, q.Peek());
+            Assert.Equal(5, q.Peek());
         }
         [Fact]
         public void IsEmpty_True_False()

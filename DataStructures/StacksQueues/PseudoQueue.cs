@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DataStructures.StacksQueues;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -15,7 +16,7 @@ namespace DataStructures.StacksQueues
             Stack<T> temp = new Stack<T>();
             while (stack.isEmpty() == false )
             {
-                temp.Push(Data.Pop());
+                temp.Push(stack.Pop());
             }
             return temp;
         }
@@ -23,8 +24,7 @@ namespace DataStructures.StacksQueues
 
         public void EnQueue(T value)
         {
-            if (Data == null)
-                throw new EmptyStackException();
+            
             Stack<T> temp = new Stack<T>();
             Node<T> nodeValue = new Node<T>();
             nodeValue.Value = value;
@@ -35,15 +35,7 @@ namespace DataStructures.StacksQueues
             Data = Flip(Data);
         }
 
-        public IEnumerator<T> GetEnumerator()
-        {
-            Node<T> current = Data.Top;
-            while (current != null)
-            {
-                yield return current.Value;
-                current = current.Next;
-            }
-        }
+        
 
         public override string ToString()
         {
@@ -61,7 +53,12 @@ namespace DataStructures.StacksQueues
 
         public T DeQueue()
         {
-            return Flip(Data).Pop();  
+
+            
+            Stack<T> temp = Flip(Data);
+            T result = temp.Pop();
+            Data = Flip(temp);
+            return result;
         }
 
         public bool isEmpty()
@@ -71,8 +68,16 @@ namespace DataStructures.StacksQueues
 
         public T Peek()
         {
-            return Flip(Data).Peek();
+            return Data.Peek();
         }
-       
+        public IEnumerator<T> GetEnumerator()
+        {
+            Node<T> current = Data.Top;
+            while (current != null)
+            {
+                yield return current.Value;
+                current = current.Next;
+            }
+        }
     }
 }
