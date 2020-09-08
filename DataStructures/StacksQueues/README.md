@@ -66,11 +66,11 @@ Input |	Args |	Output
 ------|------|--------------------------------
 [10]->[15]->[20] |	5	| [5]->[10]->[15]->[20]
  null	| 5 |	[5]
- 
+
 ```dequeue()```
 Input	| Output |	Internal State
 ------|--------|--------------------
-[5]->[10]->[15]->[20] |	20 |	[5]->[10]->[15])
+[5]->[10]->[15]->[20] |	20 |	[5]->[10]->[15]
 [5]->[10]->[15] |	15 |	[5]->[10]
 ## Requirements
 Ensure your complete solution follows the standard requirements.
