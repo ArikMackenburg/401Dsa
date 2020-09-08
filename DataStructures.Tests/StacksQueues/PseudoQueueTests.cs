@@ -35,8 +35,9 @@ namespace DataStructures.Tests.StacksQueues
 
             q.EnQueue(3);
             q.EnQueue(2);
+            q.EnQueue(1);
 
-            Assert.Equal("{ 3 } -> { 2 } -> NULL", q.ToString());
+            Assert.Equal("{ 1 } -> { 2 } -> { 3 } -> NULL", q.ToString());
 
         }
         [Fact]

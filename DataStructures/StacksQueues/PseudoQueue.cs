@@ -9,7 +9,16 @@ namespace DataStructures.StacksQueues
     public class PseudoQueue<T> : IQueue<T>
     {
         private Stack<T> Data = new Stack<T>();
-
+        
+        private Stack<T> Flip(Stack<T> stack)
+        {
+            Stack<T> temp = new Stack<T>();
+            while (stack.isEmpty() == false )
+            {
+                temp.Push(Data.Pop());
+            }
+            return temp;
+        }
         
 
         public void EnQueue(T value)
@@ -23,7 +32,7 @@ namespace DataStructures.StacksQueues
             while (Data.isEmpty() == false)
                 temp.Push(Data.Pop());
             Data = temp;
-            
+            Data = Flip(Data);
         }
 
         public IEnumerator<T> GetEnumerator()
@@ -52,7 +61,7 @@ namespace DataStructures.StacksQueues
 
         public T DeQueue()
         {
-            return Data.Pop();  
+            return Flip(Data).Pop();  
         }
 
         public bool isEmpty()
@@ -62,7 +71,7 @@ namespace DataStructures.StacksQueues
 
         public T Peek()
         {
-            return Data.Peek();
+            return Flip(Data).Peek();
         }
        
     }
