@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace DataStructures.StacksQueues
 {
-    public class Stack<T> : IEnumerable<T>
+    public class Stack<T> : IEnumerable<T>, IStack<T>
     {
         public Node<T> Top { get; set; }
         public void Push(T value)
@@ -15,13 +15,13 @@ namespace DataStructures.StacksQueues
                 Value = value,
                 Next = Top
             };
-           
+
         }
         public T Pop()
         {
             if (Top == null)
             {
-                
+
                 throw new EmptyStackException();
             }
             T result = Top.Value;
@@ -40,7 +40,7 @@ namespace DataStructures.StacksQueues
         }
         public bool isEmpty()
         {
-            if ( Top == null)
+            if (Top == null)
             {
                 return true;
             }
@@ -69,7 +69,7 @@ namespace DataStructures.StacksQueues
                 current = current.Next;
             }
         }
-      
+
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
