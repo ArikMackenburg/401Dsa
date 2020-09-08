@@ -65,7 +65,7 @@ The ```Stack``` instances have only push, pop, and peek methods. You should use 
 Input |	Args |	Output
 ------|------|--------------------------------
 [10]->[15]->[20] |	5	| [5]->[10]->[15]->[20]
- 	| 5 |	[5]
+ null	| 5 |	[5]
 ```dequeue()```
 Input	| Output |	Internal State
 ------|--------|--------------------
