@@ -7,7 +7,7 @@ namespace Challenges.StacksQueues
 {
     public class AnimalShelter<T> where T : Animal
     {
-        private DataStructures.StacksQueues.Queue<T> Animals = new DataStructures.StacksQueues.Queue<T>();
+        private Queue<T> Animals = new Queue<T>();
 
         public void Enqueue(T animal)
         {
@@ -20,7 +20,7 @@ namespace Challenges.StacksQueues
         {
           
             Node<T> result = new Node<T>();
-            DataStructures.StacksQueues.Queue<T> temp = new DataStructures.StacksQueues.Queue<T>();
+            Queue<T> temp = new Queue<T>();
             switch (type)
             {
                 case AnimalType.Cat:

@@ -59,5 +59,18 @@ namespace Challenges.Test.StacksQueues
 
             Assert.Equal("Melo", melo.Name);
         }
+        [Fact]
+        public static void DeQueue_return_front()
+        {
+            AnimalShelter<Animal> shelter = new AnimalShelter<Animal>();
+
+            shelter.Enqueue(new Dog("Melo"));
+            shelter.Enqueue(new Dog("Remy"));
+            shelter.Enqueue(new Cat("Misty"));
+
+            Animal melo = shelter.DeQueue();
+
+            Assert.Equal("Melo", melo.Name);
+        }
     }
 }
