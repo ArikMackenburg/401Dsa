@@ -54,11 +54,7 @@ namespace DataStructures.StacksQueues
         public T DeQueue()
         {
 
-            
-            Stack<T> temp = Flip(Data);
-            T result = temp.Pop();
-            Data = Flip(temp);
-            return result;
+            return Data.Pop();
         }
 
         public bool isEmpty()

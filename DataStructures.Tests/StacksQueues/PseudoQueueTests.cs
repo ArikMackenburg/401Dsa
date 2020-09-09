@@ -37,8 +37,8 @@ namespace DataStructures.Tests.StacksQueues
             q.EnQueue(10);
             q.EnQueue(5);
 
-            Assert.Equal(20, q.DeQueue());
-            Assert.Equal("{ 5 } -> { 10 } -> { 15 } -> NULL", q.ToString());
+            Assert.Equal(5, q.DeQueue());
+            Assert.Equal("{ 10 } -> { 15 } -> { 20 } -> NULL", q.ToString());
 
 
         }
