@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xunit;
 using Challenges.StacksQueues;
+using DataStructures.StacksQueues;
 
 namespace Challenges.Test.StacksQueues
 {
@@ -71,6 +72,17 @@ namespace Challenges.Test.StacksQueues
             Animal melo = shelter.DeQueue();
 
             Assert.Equal("Melo", melo.Name);
+        }
+        [Fact]
+        public void DeQueue_throws_EmptyEx_on_empty()
+        {
+            AnimalShelter<Animal> shelter = new AnimalShelter<Animal>();
+
+            Exception ex = Assert.Throws<EmptyQueueException>(() =>
+            {
+                shelter.DeQueue();
+            });
+            Assert.Equal("Queue is empty", ex.Message);
         }
     }
 }
