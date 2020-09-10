@@ -14,8 +14,8 @@ namespace Challenges.StacksQueues
     }
     public enum AnimalType
     {
-        Cat = 1,
-        Dog = 2,
+        Cat,
+        Dog,
     }
 
     public class Cat : Animal
