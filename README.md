@@ -3,3 +3,4 @@
 + [Array Challenges](./Challenges/Arrays/README.md)
 + [Linked Lists](./DataStructures/LinkedLists/README.md)
 + [Stacks/Queues](./DataStructures/StacksQueues/README.md)
++ [Animal Shelter](./Challenges/StacksQueues/README.md)
