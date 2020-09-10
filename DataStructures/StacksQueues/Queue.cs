@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataStructures.StacksQueues
 {
-    public class Queue<T> : IEnumerable<T>, IQueue<T>
+    public class Queue<T> : IEnumerable<T>
     {
         public Node<T> Front { get; set; }
 
