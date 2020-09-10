@@ -13,3 +13,5 @@ Ensure your complete solution follows the standard requirements.
 
 + Write unit tests
 + Follow the template for a well-formatted README
+
+![Animal Shelter](../../Assets/AnimalShelter.png)
