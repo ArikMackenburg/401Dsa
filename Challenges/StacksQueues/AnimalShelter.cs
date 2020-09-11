@@ -35,7 +35,7 @@ namespace Challenges.StacksQueues
                                 temp.EnQueue(Animals.DeQueue());
                             break;
                         }
-
+                        
                         temp.EnQueue(Animals.DeQueue());
                     }
                     Animals = temp;
