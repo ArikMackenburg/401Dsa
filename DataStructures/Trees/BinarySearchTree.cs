@@ -6,12 +6,12 @@ namespace DataStructures.Trees
 {
     public class BinarySearchTree<T>
     {
-        public Node<double> Root { get; set; }
-        public Node<double> Current { get; set; }
+        public TreeNode<double> Root { get; set; }
+        public TreeNode<double> Current { get; set; }
 
         public void Add(double val)
         {
-            Node<double> newNode = new Node<double>(val);
+            TreeNode<double> newNode = new TreeNode<double>(val);
 
             if (Root == null)
             {
@@ -20,7 +20,7 @@ namespace DataStructures.Trees
             else
             {
                 Current = Root;
-                Node<double> Last = Current;
+                TreeNode<double> Last = Current;
                 while (Current != null)
                 {
                     Last = Current;
@@ -55,7 +55,6 @@ namespace DataStructures.Trees
         {
             if (val < Current.Value)
             {
-                Console.WriteLine("left");
                 Current = Current.Left;
             }
 
