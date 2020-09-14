@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DataStructures.Trees
 {
-    public class LinkedList<T>
+    public class LinkedList<T> : IEnumerable<T>
         where T: IComparable<T>
     {
         public TreeNode<T> Head { get; set; }
@@ -136,6 +137,21 @@ namespace DataStructures.Trees
             return current.Value;
 
 
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            TreeNode<T> current = Head;
+            while (current != null)
+            {
+                yield return current.Value;
+                current = current.Next;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

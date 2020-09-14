@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using DataStructures.StacksQueues;
@@ -62,6 +63,24 @@ namespace DataStructures.Trees
             list.Append(node.Value);
             return list;
 
+        }
+
+        public T GetMax()
+        {
+            LinkedList<T> list = PostOrder();
+            T result = Root.Value;
+            TreeNode<T> current = list.Head;
+
+            while(current.Next != null)
+            {
+                if (result.CompareTo(current.Value) < 0)
+                {
+                    result = current.Value;
+                }
+                current = current.Next;
+            }
+
+            return result;
         }
 
 

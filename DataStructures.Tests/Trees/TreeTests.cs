@@ -92,5 +92,12 @@ namespace DataStructures.Tests.Trees
 
             Assert.Equal("{ 5 } -> { 7 } -> { 10 } -> { 17 } -> { 22 } -> { 20 } -> { 15 } -> NULL", preorderList.ToString());
         }
+
+        [Fact]
+        public void MaxGivesMax()
+        {
+            BinaryTree<int> tree = CreateTree();
+            Assert.Equal(22, tree.GetMax());
+        }
     }
 }
