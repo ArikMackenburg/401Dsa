@@ -35,16 +35,11 @@ namespace DataStructures.Trees
 
 
         }
+        //Still to do
         private double[] InOrderTraversal(Node<double> node)
         {
             double[] result = new double[Count];
-            int i = 0;
-            if(node != null)
-            {
-                PreOrderTraversal(node.Left);
-                result[i++] = node.Value;
-                PreOrderTraversal(node.Right);
-            }
+           
             return result;
         }
         public double[] InOrder()
@@ -66,5 +61,7 @@ namespace DataStructures.Trees
             Console.WriteLine($"Count: {Count}");
             return Count;
         }
+
+
     }
 }
