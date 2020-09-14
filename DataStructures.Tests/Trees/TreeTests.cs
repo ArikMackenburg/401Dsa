@@ -25,5 +25,8 @@ namespace DataStructures.Tests.Trees
             Assert.True(tree.Contains(69));
             Assert.False(tree.Contains(99));
         }
+
+        
+
     }
 }
