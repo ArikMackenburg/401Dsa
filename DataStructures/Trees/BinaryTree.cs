@@ -85,7 +85,6 @@ namespace DataStructures.Trees
 
         public TreeList<T> Breadth()
         {
-            TreeList<T> result = new TreeList<T>();
             TreeQueue<T> q = new TreeQueue<T>();
             q.Front = Root;
             return BreadthList(q);

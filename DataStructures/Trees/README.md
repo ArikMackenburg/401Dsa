@@ -22,3 +22,15 @@ Write tests to prove the following functionality:
 
 Stretch Goal
 Create a new branch called k-ary-tree, and, using the resources available to you online, implement a k-ary tree, where each node can have any number of children.
+
+## Breadth-first Traversal.
+### Specifications
+Feature Tasks
+Write a breadth first traversal method which takes a Binary Tree as its unique input. Without utilizing any of the built-in methods available to your language, traverse the input tree using a Breadth-first approach, and return a list of the values in the tree in the order they were encountered.
+## Example
+#### Input
+![Example Tree](../../Assets/binary-tree.png)
+example
+
+Output
+[2,7,5,2,6,9,5,11,4]
