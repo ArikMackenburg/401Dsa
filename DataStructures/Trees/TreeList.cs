@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataStructures.Trees
 {
-    public class LinkedList<T> : IEnumerable<T>
+    public class TreeList<T> : IEnumerable<T>
         where T: IComparable<T>
     {
         public TreeNode<T> Head { get; set; }
