@@ -11,13 +11,13 @@ namespace DataStructures.Trees
     {
         public TreeNode<T> Root = new TreeNode<T>();
 
-        public LinkedList<T> PreOrder()
+        public TreeList<T> PreOrder()
         {
-            LinkedList<T> result = new LinkedList<T>();
+            TreeList<T> result = new TreeList<T>();
             Preorder(result, Root);
             return result;
         }
-        private LinkedList<T> Preorder(LinkedList<T> list,TreeNode<T> node)
+        private TreeList<T> Preorder(TreeList<T> list,TreeNode<T> node)
         {
             if (node == null)
                 return list;
@@ -28,13 +28,13 @@ namespace DataStructures.Trees
 
         }
 
-        public LinkedList<T> InOrder()
+        public TreeList<T> InOrder()
         {
-            LinkedList<T> result = new LinkedList<T>();
+            TreeList<T> result = new TreeList<T>();
             Inorder(result, Root);
             return result;
         }
-        private LinkedList<T> Inorder(LinkedList<T> list, TreeNode<T> node)
+        private TreeList<T> Inorder(TreeList<T> list, TreeNode<T> node)
         {
             if (node == null)
                 return list;
@@ -46,13 +46,13 @@ namespace DataStructures.Trees
 
         }
 
-        public LinkedList<T> PostOrder()
+        public TreeList<T> PostOrder()
         {
-            LinkedList<T> result = new LinkedList<T>();
+            TreeList<T> result = new TreeList<T>();
             Postorder(result, Root);
             return result;
         }
-        private LinkedList<T> Postorder(LinkedList<T> list, TreeNode<T> node)
+        private TreeList<T> Postorder(TreeList<T> list, TreeNode<T> node)
         {
             if (node == null)
                 return list;
@@ -67,7 +67,7 @@ namespace DataStructures.Trees
 
         public T GetMax()
         {
-            LinkedList<T> list = PostOrder();
+            TreeList<T> list = PostOrder();
             T result = Root.Value;
             TreeNode<T> current = list.Head;
 
@@ -83,8 +83,33 @@ namespace DataStructures.Trees
             return result;
         }
 
+        public TreeList<T> Breadth()
+        {
+            TreeList<T> result = new TreeList<T>();
+            TreeQueue<T> q = new TreeQueue<T>();
+            q.Front = Root;
+            return BreadthList(q);
+            
+        }
+        private TreeList<T> BreadthList(TreeQueue<T> q)
+        {
+            TreeList<T> list = new TreeList<T>();
 
+            while (q.Front != null)
+            {
+                if (q.Front.Left != null)
+                {
+                    q.EnQueueNode(q.Front.Left);
+                }
 
+                if (q.Front.Right != null)
+                {
+                    q.EnQueueNode(q.Front.Right);
+                }
+                list.Append(q.DeQueue());
+            }
+            return list;
+        }
 
     }
 }
