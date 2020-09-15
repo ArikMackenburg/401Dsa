@@ -6,13 +6,18 @@ using DataStructures.StacksQueues;
 
 namespace DataStructures.Trees
 {
-    public class TreeNode<T> : Node<T>
+    public class TreeNode<T>
     {
+
+        public TreeNode()
+        {
+
+        }
         public TreeNode(T value) {
             Value = value;
         }
-        //public T Value { get; set; }
-
+        public T Value { get; set; }
+        public TreeNode<T> Next { get; set; }
        
         public TreeNode<T> Left { get; set; }
 
