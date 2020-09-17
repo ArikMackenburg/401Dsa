@@ -1,17 +1,21 @@
-﻿using System;
+﻿using DataStructures.LinkedLists;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml;
 
 namespace DataStructures.Trees
 {
-    public class BinarySearchTree<T> : BinaryTree<int>
-    {
-        public new TreeNode<int> Root { get; set; }
-        public new TreeNode<int> Current { get; set; }
 
-        public void Add(int val)
+    //Was messing around with other nodes didnt finish though
+    public class FizzBuzzSearchTree<T> : BinarySearchTree<int>
+    {
+        public new FizzBuzzNode<T> Root { get; set; }
+        public new FizzBuzzNode<T> Current { get; set; }
+
+        public new void Add(int val)
         {
-            TreeNode<int> newNode = new TreeNode<int>(val);
+            FizzBuzzNode<T> newNode = new FizzBuzzNode<T>(val);
 
             if (Root == null)
             {
@@ -20,7 +24,7 @@ namespace DataStructures.Trees
             else
             {
                 Current = Root;
-                TreeNode<int> Last = Current;
+                FizzBuzzNode<T> Last = Current;
                 while (Current != null)
                 {
                     Last = Current;
@@ -33,7 +37,7 @@ namespace DataStructures.Trees
 
             }
         }
-        public bool Contains(int val)
+        public new bool Contains(int val)
         {
             if (Root == null)
                 return false;
@@ -51,7 +55,7 @@ namespace DataStructures.Trees
             }
         }
 
-        public void Direction(double val)
+        public void Direction(int val)
         {
             if (val < Current.Value)
             {
@@ -61,6 +65,22 @@ namespace DataStructures.Trees
             else
                 Current = Current.Right;
 
+        }
+        public FizzBuzzSearchTree<string> FizzyTime(BinaryTree<int> tree)
+        {
+            FizzBuzzSearchTree<string> result = new FizzBuzzSearchTree<string>();
+            var list = tree.Breadth();
+
+            foreach(int val in list)
+            {
+                var node = new FizzBuzzNode<string>(val);
+                
+            }
+
+
+            return result;
+
+           
         }
     }
 }

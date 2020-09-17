@@ -4,10 +4,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using DataStructures.Trees;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.ComponentModel.Design.Serialization;
 
 namespace DataStructures.Trees
 {
     public class TreeQueue<T> : IEnumerable<T>
+        where T : IComparable<T>
     {
         public TreeNode<T> Front { get; set; }
         
@@ -54,6 +58,16 @@ namespace DataStructures.Trees
             Front = Front.Next;
             return result;
         }
+        public TreeNode<T> DeQueueNode()
+        {
+            if (Front == null)
+            {
+                throw new Exception();
+            }
+            TreeNode<T> result = Front;
+            Front = Front.Next;
+            return result;
+        }
 
         public T Peek()
         {
@@ -84,12 +98,19 @@ namespace DataStructures.Trees
             {
                 result = $"{result}{{ {current.Value} }} -> ";
                 current = current.Next;
-
             }
 
             return $"{result}NULL";
         }
-        
+
+        public BinaryTree<T> GenerateTree()
+        {
+            BinaryTree<T> tree = new BinaryTree<T>();
+            return tree.TreeBuilder(this);
+        }
+
+    
+
         public IEnumerator<T> GetEnumerator()
         {
             TreeNode<T> current = Front;
@@ -99,7 +120,7 @@ namespace DataStructures.Trees
                 current = current.Next;
             }
         }
-
+        
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
@@ -107,5 +128,7 @@ namespace DataStructures.Trees
 
        
     }
+
+    
 }
 
