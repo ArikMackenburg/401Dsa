@@ -10,6 +10,8 @@ namespace DataStructures.Trees
         where T: IComparable<T>
     {
         public TreeNode<T> Root = new TreeNode<T>();
+        public TreeNode<T> Current = new TreeNode<T>();
+        
 
         public TreeList<T> PreOrder()
         {
@@ -83,16 +85,16 @@ namespace DataStructures.Trees
             return result;
         }
 
-        public TreeList<T> Breadth()
+        public TreeQueue<T> Breadth()
         {
             TreeQueue<T> q = new TreeQueue<T>();
             q.Front = Root;
             return BreadthList(q);
             
         }
-        private TreeList<T> BreadthList(TreeQueue<T> q)
+        private TreeQueue<T> BreadthList(TreeQueue<T> q)
         {
-            TreeList<T> list = new TreeList<T>();
+            TreeQueue<T> list = new TreeQueue<T>();
 
             while (q.Front != null)
             {
@@ -105,10 +107,34 @@ namespace DataStructures.Trees
                 {
                     q.EnQueueNode(q.Front.Right);
                 }
-                list.Append(q.DeQueue());
+                list.EnQueue(q.DeQueue());
             }
             return list;
         }
 
+        public BinaryTree<T> TreeBuilder(TreeQueue<T> q)
+        {
+            Root = q.Front;
+            Current = Root;
+            var current = Current;
+            current = current.Next;
+            while (true)
+            {
+                Current.Left = current;
+                current = current.Next;
+                if (current == null)
+                    return this;
+                Current.Right = current;
+                current = current.Next;
+                if (current == null)
+                    return this;
+                Current = Current.Next;
+
+            }
+        }
+        
+
+        
+        
     }
 }
