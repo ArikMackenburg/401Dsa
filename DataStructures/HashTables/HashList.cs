@@ -19,7 +19,7 @@ namespace DataStructures.HashTables
             if(Head != null)
             {
                 Helper(newNode);
-            newNode.Next.Last = newNode;
+                newNode.Next.Last = newNode;
             }
             else
             {
