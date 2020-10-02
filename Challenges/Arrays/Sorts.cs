@@ -95,17 +95,18 @@ namespace Challenges.Arrays
         private static int Partition(int[] arr, int left, int right)
         {
             int pivot = arr[right];
-            int low = (left - 1);
+            int low = left;
             for(int i = left; i < right; i++)
             {
                 if(arr[i] < pivot)
                 {
-                    low++;
                     Swap(arr, i, low);
+                    low++;
+
                 }
             }
-            Swap(arr, right, low +1);
-            return low + 1;
+            Swap(arr, right, low);
+            return low;
         }
 
         private static int[] Swap(int[]arr, int x, int y)
