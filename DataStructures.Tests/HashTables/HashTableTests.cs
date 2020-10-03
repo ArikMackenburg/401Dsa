@@ -33,10 +33,38 @@ namespace DataStructures.Tests.HashTables
         [Fact]
         public void HashTableStuffWorksQuickTests()
         {
-            var table = new DataStructures.HashTables.HashTable<string>(100);
+            var table = new HashTable<string>(100);
             table.Add("Taco", "Beef");
-            table.Add("Taco", "Chicken");
-            Assert.Equal("Chicken", table.Get("Taco"));
+            Assert.Equal("Beef", table.Get("Taco"));
+        }
+
+        [Fact]
+        public void TryFindTest()
+        {
+            var table = new HashTable<string>(100);
+            table.Add("Taco", "Beef");
+            string x;
+            Assert.True(table.TryFind("Taco", out x));
+            Assert.Equal("Beef", x);
+            Assert.Equal("Beef", table["Taco"]);
+        }
+        [Fact]
+        public void Contains()
+        {
+            var table = new HashTable<string>(100);
+            table.Add("Taco", "Beef");
+            Assert.False(table.Contains("Dog"));
+            Assert.True(table.Contains("Taco"));
+
+        }
+        [Fact]
+        public void RemoveRemovesValue()
+        {
+            var table = new HashTable<string>(100);
+            table.Add("Taco", "Beef");
+            Assert.NotNull(table.Get("Taco"));
+            table.Remove("Taco");
+            Assert.False(table.Contains("Taco"));
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DataStructures.HashTables
 {
-    public class HashTable<TValue>
+    public class HashTable<TValue> 
     {
         public HashTable(int buckets)
         {
@@ -25,6 +25,7 @@ namespace DataStructures.HashTables
         }
         public static int GetHash(string key)
         {
+            
             int key_ascii = BreakdownString(key);
             return key_ascii * 269;
 
@@ -40,6 +41,7 @@ namespace DataStructures.HashTables
             }
         }
         public List<HashList<TValue>> BucketList { get; set; }
+        public TValue this[string key] { get => Get(key); }
 
         public void Add(string key, TValue value)
         {
@@ -66,6 +68,19 @@ namespace DataStructures.HashTables
             var bucket = hash % Buckets;
             var list = BucketList.Find(b => b.Bucket == bucket);
             return list;
+        }
+        public bool TryFind(string key, out TValue value)
+        {
+            int hash = GetHash(key);
+            var list = FindBucket(hash);
+            value = list.KeyValue(hash);
+            return list.Includes(hash);
+        }
+        public void Remove(string key)
+        {
+            var hash = GetHash(key);
+            var list = FindBucket(hash);
+            list.Remove(hash);
         }
         
     }

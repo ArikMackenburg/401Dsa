@@ -54,11 +54,13 @@ namespace DataStructures.HashTables
                 {
                     current.Last.Next = current.Next;
                     current.Next.Last = current.Last;
+                    Head = current.Next;
                 }
                 if (current.Key == key && Head == current)
                 {
-                    current.Next = Head;
+                    Head = current.Next;
                 }
+                current = current.Next;
             }
         }
         public TValue KeyValue(int key)
