@@ -33,8 +33,8 @@ namespace DataStructures.HashTables
         public void Clear() => ResetBuckets();
         private void ResetBuckets()
         {
-            BucketList = new List<HashList<TValue>>();
-            for (int i = 1; i <= Buckets; i++)
+            BucketList = new List<HashList<TValue>>(10);
+            for (int i = 0; i < Buckets; i++)
             {
                 HashList<TValue> bucket = new HashList<TValue>(i);
                 BucketList.Add(bucket);
@@ -47,7 +47,7 @@ namespace DataStructures.HashTables
         {
             int hash = GetHash(key);
             int x = hash % Buckets;
-            var bucket = BucketList.Find(b=> b.Bucket == x);
+            var bucket = BucketList[x];
             bucket.Insert(key, hash, value);
         }
         public TValue Get(string key)
@@ -66,7 +66,7 @@ namespace DataStructures.HashTables
         private HashList<TValue> FindBucket(int hash)
         {
             var bucket = hash % Buckets;
-            var list = BucketList.Find(b => b.Bucket == bucket);
+            var list = BucketList[bucket];
             return list;
         }
         public bool TryFind(string key, out TValue value)
