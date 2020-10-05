@@ -48,19 +48,19 @@ namespace DataStructures.HashTables
             int hash = GetHash(key);
             int x = hash % Buckets;
             var bucket = BucketList.Find(b=> b.Bucket == x);
-            bucket.Insert(hash,value);
+            bucket.Insert(key, hash, value);
         }
         public TValue Get(string key)
         {
             int hash = GetHash(key);
             var list = FindBucket(hash);
-            return list.KeyValue(hash);
+            return list.KeyValue(key);
         }
         public bool Contains(string key)
         {
             int hash = GetHash(key);
             var list = FindBucket(hash);
-            return list.Includes(hash);
+            return list.Includes(key);
         }
 
         private HashList<TValue> FindBucket(int hash)
@@ -73,14 +73,14 @@ namespace DataStructures.HashTables
         {
             int hash = GetHash(key);
             var list = FindBucket(hash);
-            value = list.KeyValue(hash);
-            return list.Includes(hash);
+            value = list.KeyValue(key);
+            return list.Includes(key);
         }
         public void Remove(string key)
         {
             var hash = GetHash(key);
             var list = FindBucket(hash);
-            list.Remove(hash);
+            list.Remove(key);
         }
         
     }

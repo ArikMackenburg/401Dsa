@@ -23,12 +23,12 @@ namespace DataStructures.Tests.HashTables
         {
             var list = new HashList<string>(1);
 
-            list.Insert(77, "Chicken");
-            list.Insert(12, "Taco");
+            list.Insert("Zesty",77, "Chicken");
+            list.Insert("Crunchy",12, "Taco");
 
             Assert.NotNull(list.Head);
-            Assert.True(list.Includes(12));
-            Assert.Equal("Chicken", list.KeyValue(77));
+            Assert.True(list.Includes("Crunchy"));
+            Assert.Equal("Chicken", list.KeyValue("Zesty"));
         }
         [Fact]
         public void HashTableStuffWorksQuickTests()

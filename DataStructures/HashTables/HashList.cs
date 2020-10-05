@@ -13,9 +13,9 @@ namespace DataStructures.HashTables
         }
         public int Bucket { get; set; }
         public HashNode<TValue> Head { get; set; }
-        public void Insert(int key, TValue value)
+        public void Insert(string key,int hash, TValue value)
         {
-            HashNode<TValue> newNode = new HashNode<TValue>(Bucket,key,value);
+            HashNode<TValue> newNode = new HashNode<TValue>(Bucket,key,hash,value);
             if(Head != null)
             {
                 Helper(newNode);
@@ -31,7 +31,7 @@ namespace DataStructures.HashTables
             newNode.Next = Head;
             Head = newNode;
         }
-        public bool Includes(int key)
+        public bool Includes(string key)
         {
             HashNode<TValue> current = Head;
 
@@ -45,7 +45,7 @@ namespace DataStructures.HashTables
             }
             return false;
         }
-        public void Remove(int key)
+        public void Remove(string key)
         {
             HashNode<TValue> current = Head;
             while (current != null)
@@ -63,7 +63,7 @@ namespace DataStructures.HashTables
                 current = current.Next;
             }
         }
-        public TValue KeyValue(int key)
+        public TValue KeyValue(string key)
         {
             HashNode<TValue> current = Head;
 
@@ -77,6 +77,7 @@ namespace DataStructures.HashTables
             }
             throw new KeyNotFoundException();
         }
+        
     }
    
 }
