@@ -21,10 +21,12 @@ namespace Challenges.HashTable
         {
             foreach(var word in Words)
             {
-                if (HashTable.Contains(word) && word != "")
+                if (HashTable.Contains(word))
                     return word;
-
+                if(word != "")
+                {
                 HashTable.Add(word.ToLower(), word.ToLower());
+                }
             }
             return null;
         }
