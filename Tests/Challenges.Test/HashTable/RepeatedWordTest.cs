@@ -76,6 +76,59 @@ namespace Challenges.Test.HashTable
             Assert.Equal(new List<int> { 15, 17 }, trees.RepeatedValueList());
 
         }
+        public BinaryTree<int> CreateTree3()
+        {
+            BinaryTree<int> tree = new BinaryTree<int>();
+            TreeNode<int> node = new TreeNode<int>(15);
+            tree.Root = node;
+
+            TreeNode<int> current = tree.Root;
+            TreeNode<int> left = new TreeNode<int>(10);
+            TreeNode<int> right = new TreeNode<int>(20);
+            current.Left = left;
+            current.Right = right;
+            TreeNode<int> leftLeft = new TreeNode<int>(5);
+            TreeNode<int> leftRight = new TreeNode<int>(7);
+            left.Left = leftLeft;
+            left.Right = leftRight;
+            TreeNode<int> rightLeft = new TreeNode<int>(17);
+            TreeNode<int> RightRight = new TreeNode<int>(22);
+            right.Left = rightLeft;
+            right.Right = RightRight;
+
+            return tree;
+        }
+        public BinaryTree<int> CreateTree4()
+        {
+            BinaryTree<int> tree = new BinaryTree<int>();
+            TreeNode<int> node = new TreeNode<int>(12);
+            tree.Root = node;
+
+            TreeNode<int> current = tree.Root;
+            TreeNode<int> left = new TreeNode<int>(11);
+            TreeNode<int> right = new TreeNode<int>(21);
+            current.Left = left;
+            current.Right = right;
+            TreeNode<int> leftLeft = new TreeNode<int>(8);
+            TreeNode<int> leftRight = new TreeNode<int>(9);
+            left.Left = leftLeft;
+            left.Right = leftRight;
+            TreeNode<int> rightLeft = new TreeNode<int>(16);
+            TreeNode<int> RightRight = new TreeNode<int>(24);
+            right.Left = rightLeft;
+            right.Right = RightRight;
+
+            return tree;
+        }
+        [Fact]
+        public void Repeated_values_where_none_intersect()
+        {
+            var tree1 = CreateTree3();
+            var tree2 = CreateTree4();
+            var trees = new RepeatedValues(tree1, tree2);
+
+            Assert.Equal(new List<int> { }, trees.RepeatedValueList());
+        }
     }
    
 }
