@@ -33,7 +33,7 @@ namespace DataStructures.HashTables
         public void Clear() => ResetBuckets();
         private void ResetBuckets()
         {
-            BucketList = new List<HashList<TValue>>(10);
+            BucketList = new List<HashList<TValue>>(Buckets);
             for (int i = 0; i < Buckets; i++)
             {
                 HashList<TValue> bucket = new HashList<TValue>(i);
