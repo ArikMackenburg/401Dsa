@@ -57,7 +57,7 @@ namespace Challenges.HashTable
             {
                 if(HashTable.Contains(value.ToString()))
                 {
-                    list.Add(Convert.ToInt32(value));
+                    list.Add(value);
                 }
             }
             return list;
