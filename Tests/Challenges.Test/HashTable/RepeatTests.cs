@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using Challenges.HashTable;
+using DataStructures.HashTables;
 using DataStructures.Trees;
 using Xunit;
 
 namespace Challenges.Test.HashTable
 {
-    public class RepeatedWordTest
+    public class RepeatTests
     {
         [Theory]
         [InlineData("a","Once upon a time, there was a brave princess who...")]
@@ -128,6 +129,44 @@ namespace Challenges.Test.HashTable
             var trees = new RepeatedValues(tree1, tree2);
 
             Assert.Equal(new List<int> { }, trees.RepeatedValueList());
+        }
+        [Fact]
+        public void Left_join_tables_left_joins_tables()
+        {
+            var table1 = new HashTable<string>(10);
+            table1.Add("fond", "enamored");
+            table1.Add("wrath", "anger");
+            table1.Add("diligent", "employed");
+            table1.Add("outfit", "garb");
+            table1.Add("guide", "usher");
+            var table2 = new HashTable<string>(10);
+            table2.Add("fond", "averse");
+            table2.Add("wrath", "delight");
+            table2.Add("diligent", "idle");
+            table2.Add("guide", "follow");
+            table2.Add("flow", "jam");
+
+            var join = new LeftJoin(table1, table2);
+
+            var expect = new HashTable<List<string>>(10);
+            expect.Add("fond", new List<string>(){ "enamored", "averse" });;
+            expect.Add("wrath", new List<string>(){ "anger", "delight" });
+            expect.Add("diligent", new List<string>() { "employed", "idle" });
+            expect.Add("outfit", new List<string>() { "garb" });
+            expect.Add("guide", new List<string>() { "usher", "follow" });
+
+            var result = join.LeftJoinTables();
+
+            expect.TryFind("fond", out var x);
+            result.TryFind("fond", out var y);
+
+            //Assert.Equal(expect, result);
+            Assert.Equal(x,y);
+            Assert.Equal(expect.Get("wrath"), result.Get("wrath"));
+            Assert.Equal(expect.Get("diligent"), result.Get("diligent"));
+            Assert.Equal(expect.Get("outfit"), result.Get("outfit"));
+            Assert.Equal(expect.Get("guide"), result.Get("guide"));
+
         }
     }
    
