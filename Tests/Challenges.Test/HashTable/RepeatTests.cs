@@ -130,8 +130,13 @@ namespace Challenges.Test.HashTable
 
             Assert.Equal(new List<int> { }, trees.RepeatedValueList());
         }
-        [Fact]
-        public void Left_join_tables_left_joins_tables()
+        [Theory]
+        [InlineData("fond")]
+        [InlineData("wrath")]
+        [InlineData("diligent")]
+        [InlineData("outfit")]
+        [InlineData("guide")]
+        public void Left_join_tables_left_joins_tables(string x)
         {
             var table1 = new HashTable<string>(10);
             table1.Add("fond", "enamored");
@@ -157,15 +162,13 @@ namespace Challenges.Test.HashTable
 
             var result = join.LeftJoinTables();
 
-            expect.TryFind("fond", out var x);
-            result.TryFind("fond", out var y);
+            expect.TryFind(x, out var y);
+            result.TryFind(x, out var z);
 
             //Assert.Equal(expect, result);
-            Assert.Equal(x,y);
-            Assert.Equal(expect.Get("wrath"), result.Get("wrath"));
-            Assert.Equal(expect.Get("diligent"), result.Get("diligent"));
-            Assert.Equal(expect.Get("outfit"), result.Get("outfit"));
-            Assert.Equal(expect.Get("guide"), result.Get("guide"));
+            Assert.Equal(y,z);
+            Assert.Equal(expect.Get(x), result.Get(x));
+        
 
         }
     }
