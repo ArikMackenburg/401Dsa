@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Text;
 
-namespace DataStructures.HashTables
+namespace DataStructures.HashTables 
 {
-    public class HashList<TValue>
+    public class HashList<TValue> : IEnumerable<KeyValuePair<string, TValue>>
     {
         public HashList(int bucket)
         {
@@ -77,7 +78,21 @@ namespace DataStructures.HashTables
             }
             throw new KeyNotFoundException();
         }
-        
+
+        public IEnumerator<KeyValuePair<string,TValue>> GetEnumerator()
+        {
+            HashNode<TValue> current = Head;
+            while (current != null)
+            {
+                yield return new KeyValuePair<string, TValue>(current.Key, current.Value);
+                current = current.Next;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
    
 }

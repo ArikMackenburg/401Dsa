@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace DataStructures.HashTables
 {
-    public class HashTable<TValue> 
+    public class HashTable<TValue> : IEnumerable<KeyValuePair<string, TValue>>
     {
         public HashTable(int buckets)
         {
@@ -33,7 +34,7 @@ namespace DataStructures.HashTables
         public void Clear() => ResetBuckets();
         private void ResetBuckets()
         {
-            BucketList = new List<HashList<TValue>>(10);
+            BucketList = new List<HashList<TValue>>(Buckets);
             for (int i = 0; i < Buckets; i++)
             {
                 HashList<TValue> bucket = new HashList<TValue>(i);
@@ -82,7 +83,23 @@ namespace DataStructures.HashTables
             var list = FindBucket(hash);
             list.Remove(key);
         }
-        
+
+        public IEnumerator<KeyValuePair<string,TValue>> GetEnumerator()
+        {
+            
+            foreach(var bucket in BucketList)
+            {
+                foreach(var key in bucket)
+                {
+                    yield return key;
+                }
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
     
 }

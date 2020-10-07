@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using DataStructures.HashTables;
+using DataStructures.Trees;
 
 namespace Challenges.HashTable
 {
@@ -13,9 +15,9 @@ namespace Challenges.HashTable
             Words = words.Split(delimiterChars);
         }
         char[] delimiterChars = { ' ', ',', '.', ':', '\t' };
-        public HashTable<string> HashTable = new HashTable<string>(100);
+        private HashTable<string> HashTable = new HashTable<string>(100);
 
-        public string[] Words { get; set; }
+        private string[] Words { get; set; }
 
         public string FirstRepeat()
         {
@@ -25,11 +27,13 @@ namespace Challenges.HashTable
                     return word;
                 if(word != "")
                 {
-                HashTable.Add(word.ToLower(), word.ToLower());
+                    HashTable.Add(word.ToLower(), word.ToLower());
                 }
             }
             return null;
         }
 
     }
+   
+    
 }
