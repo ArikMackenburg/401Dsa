@@ -37,13 +37,8 @@ namespace Challenges.HashTable
             {
                 var list = new List<string>();
                 list.Add(pair.Value);
-                foreach(var pair2 in kVList2)
-                {
-                    if(pair2.Key == pair.Key)
-                    {
-                        list.Add(pair2.Value);
-                    }
-                }
+                if(Table2.Contains(pair.Key))
+                    list.Add(Table2.Get(pair.Key));
                 leftJoinTable.Add(pair.Key, list);
             }
             return leftJoinTable;
