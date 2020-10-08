@@ -161,15 +161,57 @@ namespace Challenges.Test.HashTable
             expect.Add("guide", new List<string>() { "usher", "follow" });
 
             var result = join.LeftJoinTables();
+           
+            
 
-            expect.TryFind(x, out var y);
-            result.TryFind(x, out var z);
+            Assert.True(expect.TryFind(x, out var y));
+            Assert.True(result.TryFind(x, out var z));
 
             //Assert.Equal(expect, result);
             Assert.Equal(y,z);
-            Assert.Equal(expect.Get(x), result.Get(x));
-        
+            Assert.Equal(expect[x], result[x]);
 
+           
+            
+
+        }
+
+        [Fact]
+        public void Left_join_empty_tables()
+        {
+            var table1 = new HashTable<string>(10);
+            var table2 = new HashTable<string>(10);
+            var join = new LeftJoin(table1, table2);
+            var result = join.LeftJoinTables();
+            Assert.Empty(result);
+            Assert.False(result.Contains(""));
+        }
+
+        [Fact]
+        public void Test()
+        {
+            var table1 = new Dictionary<string, string>();
+            table1.Add("fond", "enamored");
+            table1.Add("wrath", "anger");
+            table1.Add("diligent", "employed");
+            table1.Add("outfit", "garb");
+            table1.Add("guide", "usher");
+            var table2 = new Dictionary<string, string>();
+            table2.Add("fond", "averse");
+            table2.Add("wrath", "delight");
+            table2.Add("diligent", "idle");
+            table2.Add("guide", "follow");
+            table2.Add("flow", "jam");
+            var result3 = LeftJoin.LeftJoinList(table1, table2);
+            
+            List<string[]> expect = new List<string[]>();
+            expect.Add(new string[3] { "fond", "enamored", "averse" });
+            expect.Add(new string[3] { "wrath", "anger", "delight" });
+            expect.Add(new string[3] { "diligent", "employed", "idle" });
+            expect.Add(new string[3] { "outfit", "garb", null });
+            expect.Add(new string[3] { "guide", "usher", "follow" });
+
+            Assert.Equal(expect, result3);
         }
     }
    
