@@ -17,12 +17,12 @@ namespace Challenges.HashTable
         private HashTable<string> Table1 { get; set; }
         private HashTable<string> Table2 { get; set; }
 
-        private HashTable<List<string>> LeftJoinTable { get; set; }
+        
 
         
         public HashTable<List<string>> LeftJoinTables()
         {
-            LeftJoinTable = new HashTable<List<string>>(Table1.Buckets);
+            var leftJoinTable = new HashTable<List<string>>(Table1.Buckets);
             var kVList = new List<KeyValuePair<string, string>>();
             var kVList2 = new List<KeyValuePair<string, string>>();
             foreach(var key in Table1)
@@ -44,9 +44,29 @@ namespace Challenges.HashTable
                         list.Add(pair2.Value);
                     }
                 }
-                LeftJoinTable.Add(pair.Key, list);
+                leftJoinTable.Add(pair.Key, list);
             }
-            return LeftJoinTable;
+            return leftJoinTable;
+        }
+
+        
+
+        public static List<string[]> LeftJoinList(Dictionary<string,string> hash1, Dictionary<string,string> hash2)
+        {
+            ICollection<string> key1 = hash1.Keys;
+            List<string[]> resultList = new List<string[]>();
+            foreach(var key in key1)
+            {
+                string[] arr = new string[3];
+                arr[0] = key;
+                arr[1] = hash1.GetValueOrDefault(key);
+                hash2.TryGetValue(key, out string x);
+                arr[2] = x;
+                resultList.Add(arr);
+            }
+            return resultList;
         }
     }
+   
+
 }
