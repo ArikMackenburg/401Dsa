@@ -14,13 +14,13 @@ namespace DataStructures.Tests.Graphs
         {
             Graph<int> graph = new Graph<int>();
 
-            graph.AddNode(1);
+            graph.AddVertex(1);
 
-            graph.AddNode(2);
+            graph.AddVertex(2);
 
-            graph.AddNode(3);
+            graph.AddVertex(3);
 
-            graph.AddNode(4);
+            graph.AddVertex(4);
 
             graph.AddEdge(1, 2);
 
@@ -31,6 +31,43 @@ namespace DataStructures.Tests.Graphs
             Assert.Equal(1,vertex.Value);
             Assert.Equal(4, graph.Size());
             Assert.Equal(2, neighbors.First().Value);
+
+        }
+        [Fact]
+        public void MoreTests()
+        {
+            Graph<int> graph = new Graph<int>();
+
+            graph.AddVertex(1);
+
+            Assert.Null(graph[2]);
+        }
+        [Fact]
+        public void TraversalTest()
+        {
+            Graph<string> graph = new Graph<string>();
+            graph.AddVertex("Pandora");
+            graph.AddVertex("Arendelle");
+            graph.AddVertex("Metroville");
+            graph.AddVertex("Monstropolis");
+            graph.AddVertex("Narnia");
+            graph.AddVertex("Naboo");
+            graph.AddVertex("Lol");
+
+            graph.AddEdge("Pandora", "Arendelle");
+            graph.AddEdge("Arendelle","Metroville");
+            graph.AddEdge("Arendelle", "Monstropolis");
+            graph.AddEdge("Metroville", "Monstropolis");
+            graph.AddEdge("Metroville", "Naboo");
+            graph.AddEdge("Metroville", "Narnia");
+            graph.AddEdge("Monstropolis", "Naboo");
+            graph.AddEdge("Naboo", "Narnia");
+
+            Assert.Equal("Pandora", graph["Pandora"].Value);
+            Assert.Equal("Pandora", graph.BreadthFirst("Pandora").First());
+            
+            Assert.Equal("Lol", graph.BreadthFirst("Pandora").Last());
+
 
         }
     }
